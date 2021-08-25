@@ -1,0 +1,39 @@
+#emojis a, #emojis button {
+    width: 60px;
+    height: 60px;
+    background: none;
+    background-size: cover;
+    border:0;
+    margin:15px 35px 30px 0;
+    padding: 0; /* reset */
+    display: inline-block;
+  }
+  
+  #emojis a:hover, #emojis button:hover { 
+    border:.1em solid orange;
+    border-radius: 5px;;
+  }
+  
+  #emojis img {
+    margin-top: 15px;
+    width:10em;
+    height:10em;
+  }
+  
+  .emoji_in_corner {
+    width:2em;
+    height:2em;
+    position:absolute;
+    top:-0.5em;
+    right:-0.5em;
+    filter: grayscale(80%);
+  }
+
+  .e-happy {background-image: url(../images/emojji/happy.svg) !important; }
+  .e-angry {background-image: url(../images/emojji/angry.svg) !important; }
+  .e-laughing {background-image: url(../images/emojji/laughing.svg) !important; }
+  .e-sad {background-image: url(../images/emojji/sad.svg) !important; }
+  .e-sleeping {background-image: url(../images/emojji/sleeping.svg) !important; }
+  .e-thinking {background-image: url(../images/emojji/thinking.svg) !important; }
+  .e-robot {background-image: url(../images/emojji/robot.svg) !important; }
+  .e-tongue {background-image: url(../images/emojji/tongue.svg) !important; }
