@@ -21,7 +21,7 @@ export default function Login({ username, submitUsername, submitRoom }) {
 
     submitUsername(usernameRef.current.value)
 
-    if (uuidRef.current.value != "")
+    if (uuidRef.current.value !== "")
       submitRoom(uuidRef.current.value)
     else
       submitRoom(newUuid)
@@ -31,7 +31,7 @@ export default function Login({ username, submitUsername, submitRoom }) {
 
   useEffect(() => {
     let params = queryString.parse(window.location.search)
-    if (params["partneruid"] == undefined || params["partneruid"] == '') return
+    if (params["partneruid"] === undefined || params["partneruid"] == '') return
     uuidRef.current.value = params["partneruid"]
     loginForm.current.click()
   }, []);
@@ -52,7 +52,7 @@ export default function Login({ username, submitUsername, submitRoom }) {
         </Form.Group>
 
         <div>
-          <a href="#" onClick={copyUuid}>{newUuid}</a>
+          <button type="button" class="btn btn-link" onClick={copyUuid}>{newUuid}</button>
           &nbsp; | &nbsp;
           <a
             href={`whatsapp://send?text=${whatsappMessage}`}

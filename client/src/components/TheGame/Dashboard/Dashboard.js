@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../../css/emoji.css'
 import WordDisplay from '../WordDisplay/WordDisplay';
 import Answer from '../Answer/Answer'
@@ -26,7 +26,7 @@ export default function Dashboard() {
                 <div className="col-md-6 col-sm-12 mx-auto">
                     <div className="card h-100 justify-content-center" id="word-card">
 
-                        <img className={`emoji_in_corner ${my_answer}`} style={{ visibility: alreadySent ? 'visible' : 'hidden' }} />
+                        <img className={`emoji_in_corner ${my_answer}`} style={{ visibility: alreadySent ? 'visible' : 'hidden' }} alt="התשובה שלי" />
 
                         <div className="card-body text-center p-5">
                             <h1 className="card-title">{question}</h1>

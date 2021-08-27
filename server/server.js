@@ -1,4 +1,4 @@
-//import { instrument } from "@socket.io/admin-ui";
+import { instrument } from "@socket.io/admin-ui";
 
 
 const io = require("socket.io")(process.env.PORT || 5000, {
@@ -105,4 +105,4 @@ io.on('connection', (socket) => {
 
 
 
-//instrument(io, { auth: false });
+instrument(io, { auth: false });

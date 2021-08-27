@@ -1,0 +1,8 @@
+{
+    "name": "kahoodate",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "cd client && npm start "
+    }
+}

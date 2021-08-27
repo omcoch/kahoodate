@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react'
-import WordDisplay from '../components/TheGame/WordDisplay/WordDisplay'
 import { useSocket } from './SocketProvider'
 
 const QuestionContext = React.createContext()
