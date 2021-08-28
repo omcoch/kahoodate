@@ -13,7 +13,7 @@ export default function Answer() {
 
     <div className="text-center mt-5" id="emojis">
       <span className="text-danger font-italic">{username} חושב/ת:</span><br />
-      <img className={answer} alt="תשובת המדוייט/ת" />
+      <img className={answer} />
     </div>
 
   );

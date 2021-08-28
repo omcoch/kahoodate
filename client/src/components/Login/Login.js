@@ -52,7 +52,7 @@ export default function Login({ username, submitUsername, submitRoom }) {
         </Form.Group>
 
         <div>
-          <button type="button" class="btn btn-link" onClick={copyUuid}>{newUuid}</button>
+          <button type="button" className="btn btn-link" onClick={copyUuid}>{newUuid}</button>
           &nbsp; | &nbsp;
           <a
             href={`whatsapp://send?text=${whatsappMessage}`}

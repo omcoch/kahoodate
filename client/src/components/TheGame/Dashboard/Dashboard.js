@@ -26,7 +26,7 @@ export default function Dashboard() {
                 <div className="col-md-6 col-sm-12 mx-auto">
                     <div className="card h-100 justify-content-center" id="word-card">
 
-                        <img className={`emoji_in_corner ${my_answer}`} style={{ visibility: alreadySent ? 'visible' : 'hidden' }} alt="התשובה שלי" />
+                        <img className={`emoji_in_corner ${my_answer}`} style={{ visibility: alreadySent ? 'visible' : 'hidden' }} />
 
                         <div className="card-body text-center p-5">
                             <h1 className="card-title">{question}</h1>

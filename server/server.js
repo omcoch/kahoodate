@@ -1,5 +1,3 @@
-import { instrument } from "@socket.io/admin-ui";
-
 
 const io = require("socket.io")(process.env.PORT || 5000, {
     cors: {
@@ -102,7 +100,3 @@ io.on('connection', (socket) => {
     })
 
 })
-
-
-
-instrument(io, { auth: false });

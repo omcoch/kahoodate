@@ -4,7 +4,7 @@
     background: none;
     background-size: cover;
     border:0;
-    margin:15px 35px 30px 0;
+    margin: 15px 35px 30px 0;
     padding: 0; /* reset */
     display: inline-block;
   }
@@ -16,16 +16,16 @@
   
   #emojis img {
     margin-top: 15px;
-    width:10em;
-    height:10em;
+    width: 10em;
+    height: 10em;
   }
   
   .emoji_in_corner {
-    width:2em;
-    height:2em;
-    position:absolute;
-    top:-0.5em;
-    right:-0.5em;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
     filter: grayscale(80%);
   }
 
