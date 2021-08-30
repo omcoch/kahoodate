@@ -31,7 +31,7 @@ export default function Login({ username, submitUsername, submitRoom }) {
 
   useEffect(() => {
     let params = queryString.parse(window.location.search)
-    if (params["partneruid"] === undefined || params["partneruid"] == '') return
+    if (params["partneruid"] === undefined || params["partneruid"] === '') return
     uuidRef.current.value = params["partneruid"]
     loginForm.current.click()
   }, []);

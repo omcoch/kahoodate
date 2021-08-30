@@ -3,6 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "cd client && npm start "
+        "start": "cd client && npm start"
     }
 }
