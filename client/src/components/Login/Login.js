@@ -12,8 +12,8 @@ export default function Login({ username, submitUsername, submitRoom }) {
   const newUuid = uuidV4()
 
 
-  const whatsappMessage = encodeURIComponent(`היי! הודעה מפדחת שמזמינה אותך להשתתף איתי במשחק של Kahoodate לחץ על הקישור ואל תפחד שזה סקאם /?partneruid=${newUuid}`)
-
+  const whatsappMessage = encodeURIComponent(`היי! הודעה מפדחת שמזמינה אותך להשתתף איתי במשחק של Kahoodate לחץ על הקישור ואל תפחד שזה סקאם ${window.location.href}?partneruid=${newUuid}`)
+  
 
   //TODO: ensure that the random id is really unique 
   function handleSubmit(e) {

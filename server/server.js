@@ -1,10 +1,25 @@
+// const PORT = process.env.PORT || 3000;
+// const INDEX = '/index.html';
 
+// const server = express()
+//   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+//   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+// const io = socketIO(server);
+  
+  
 const io = require("socket.io")(process.env.PORT || 5000, {
     cors: {
-        origin: ['http://localhost:3000', "https://admin.socket.io"],
+        origin: ['http://localhost:3000', "https://admin.socket.io", "https://kahoodate.herokuapp.com"],
         credentials: true
     }
 });
+
+
+
+
+
+
 
 /** 
  *  users[id] = {

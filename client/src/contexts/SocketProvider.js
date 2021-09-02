@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import io from 'socket.io-client'
+import { SERVER_URL } from '../utils/globals'
 
 const SocketContext = React.createContext()
 
@@ -18,7 +19,7 @@ export function SocketProvider({ room, username, setRoom, children }) {
         
     useEffect(() => {
         const newSocket = io(
-            'http://localhost:5000',
+            SERVER_URL,
             { 
                 query: {room, username},
                 //forceNew: true 
