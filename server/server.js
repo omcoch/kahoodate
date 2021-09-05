@@ -65,6 +65,9 @@ function getRandomWord(room) {
 io.on('connection', (socket) => {
     const room = socket.handshake.query.room // current socket room
     const username = socket.handshake.query.username // current socket username
+    
+    
+    
     socket.join(room)
     users[socket.id] = {
         room: room,
@@ -112,6 +115,7 @@ io.on('connection', (socket) => {
     // if the partner disconnected so the game over and you sad about her, keep going with life
     socket.on('disconnect', () => {
         io.to(room).emit('exit-game')
+
     })
 
 })

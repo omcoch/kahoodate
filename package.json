@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "cd client && npm start",
-        "build": "cd client && react-scripts build"
+        "start": "cd client && npm start"
     }
 }

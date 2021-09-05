@@ -25,6 +25,7 @@ export function SocketProvider({ room, username, setRoom, children }) {
                 //forceNew: true 
             }
         )
+        console.log(room, username)
         setSocket(newSocket)
 
         return () => newSocket.close() // close old socket to avoid multiple connections and duplicate messages      
