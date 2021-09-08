@@ -10,23 +10,27 @@ export function useSocket() {
 
 
 
-export function SocketProvider({ room, username, setRoom, children }) {
+export function SocketProvider({ room, username, Mode, setMode, children }) {
     const [socket, setSocket] = useState()
 
-    const userExists = (uid) => {
-        socket.emit('user-exists', uid)
+
+    const exitGame = (message) => {
+        setMode(false)
+        alert(message)
     }
-        
+
+
     useEffect(() => {
         const newSocket = io(
             SERVER_URL,
             { 
-                query: {room, username},
+                query: {room, username, Mode},
                 //forceNew: true 
             }
         )
-        console.log(room, username)
         setSocket(newSocket)
+
+        if (Mode === 'newGame') setMode('firstWait')
 
         return () => newSocket.close() // close old socket to avoid multiple connections and duplicate messages      
     }, [room])
@@ -35,9 +39,10 @@ export function SocketProvider({ room, username, setRoom, children }) {
     useEffect(() => {
         if (socket == null) return
         
-        socket.on('exit-game', () => {
-            setRoom(false)
-            alert("השותף שלך יצא מהמשחק, נסו להתחבר שוב.")
+
+
+        socket.on('exit-game', (message) => {
+            exitGame(message)
         })
 
         return () => socket.off('exit-game') // close old socket to avoid multiple connections and duplicate messages      

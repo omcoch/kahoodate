@@ -6,19 +6,27 @@ import Dashboard from '../TheGame/Dashboard/Dashboard';
 import { SocketProvider } from '../../contexts/SocketProvider';
 import { AnswerProvider } from '../../contexts/AnswerProvider';
 import { QuestionProvider } from '../../contexts/QuestionProvider';
-import { v4 as uuidV4 } from 'uuid'
+
 
 function App() {
   const [username, setUsername] = useLocalStorage('username');
-  const [room, setRoom] = useState(uuidV4())
+  const [room, setRoom] = useState()
+  const [Mode, setMode] = useState(false)
 
   const Gameboard = (
+    <SocketProvider 
+      room={room} 
+      username={username} 
+      Mode={Mode} setMode={setMode}
+    >
 
-    <QuestionProvider>
-      <AnswerProvider>
-        <Dashboard />
-      </AnswerProvider>
-    </QuestionProvider>
+      <QuestionProvider setMode={setMode}>
+        <AnswerProvider>
+          <Dashboard Mode={Mode} room={room} />
+        </AnswerProvider>
+      </QuestionProvider>
+
+    </SocketProvider>
 
   )
 
@@ -28,12 +36,15 @@ function App() {
         <img src="" id="opening_site_logo" alt="kahoodate logo" className="App-logo" />
       </header>
 
-      <SocketProvider room={room} setRoom={setRoom} username={username}>
-        {username && room ?
-          Gameboard :
-          <Login username={username} submitUsername={setUsername} submitRoom={setRoom} />
-        }
-      </SocketProvider>
+      {username && Mode ?
+        Gameboard :
+        <Login 
+          username={username} 
+          submitUsername={setUsername} 
+          submitRoom={setRoom} 
+          setMode={setMode} 
+        />
+      }
 
     </div>
   );

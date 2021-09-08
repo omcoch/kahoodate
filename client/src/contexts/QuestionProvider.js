@@ -9,7 +9,7 @@ export function useQuestion() {
 
 
 
-export function QuestionProvider({ children }) {
+export function QuestionProvider({ setMode, children }) {
     
     const [question, setQuestion] = useState('להתחלה לחצו על "לשאלה הבאה"')
     const [my_answer, setMyAnswer] = useState('')
@@ -19,16 +19,15 @@ export function QuestionProvider({ children }) {
         
     
     const requestQuestion = () => {
-        socket.emit('request-question', () => {
-            
-        })
+        socket.emit('request-question')
     }
 
     useEffect(() => {
         if (socket == null) return
         
         socket.on('receive-question', (word) => {
-            setQuestion(word)
+            setMode('inGame')
+            setQuestion(word)            
             callbackFunc(false)
             document.getElementById("word-card").scrollIntoView()
         })

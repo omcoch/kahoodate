@@ -4,14 +4,16 @@ import WordDisplay from '../WordDisplay/WordDisplay';
 import Answer from '../Answer/Answer'
 import NextQuest from '../NextQuest/NextQuest'
 import Waiting from '../Waiting/Waiting'
+import NewGameWaiting from '../NewGameWaiting/NewGameWaiting'
 import { useAnswer } from '../../../contexts/AnswerProvider';
 import { useQuestion } from '../../../contexts/QuestionProvider';
 
 
-export default function Dashboard() {
+export default function Dashboard({Mode, room}) {
     const [alreadySent, setAlreadySent] = useState(false)
     const { answerMode } = useAnswer()
     const { question, my_answer, setCallbackFunc } = useQuestion()
+
     
     // that's how i send to the parent component (QuestionProvider) the setAlreadySent state-setter
     useEffect( () => {
@@ -36,11 +38,12 @@ export default function Dashboard() {
                 </div> 
             </div>
 
-            {alreadySent ?
-                (answerMode ? <Answer /> : <Waiting />) :
-                <WordDisplay setAlreadySent={setAlreadySent} />
+            {Mode === 'firstWait' ?
+                 <NewGameWaiting room={room} /> :
+                alreadySent ?
+                    (answerMode ? <Answer /> : <Waiting />) :
+                    <WordDisplay setAlreadySent={setAlreadySent} />
             }
-
 
             <NextQuest />
 
