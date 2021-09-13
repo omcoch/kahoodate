@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from 'react'
 import { Container, Form, Button, InputGroup, FormControl } from 'react-bootstrap'
 
-import Instructions from '../Instructions/Instructions'
 import queryString from 'query-string';
 import { v4 as uuidV4 } from 'uuid'
 
-export default function Login({ username, room, submitUsername, submitRoom, setMode }) {
+export default function Login({ username, submitUsername, submitRoom, setMode }) {
   const usernameRef = useRef()
+  const newgameRef = useRef()
   const uuidRef = useRef() // the group id to sign in (if you're the invited)
   const submitButton = useRef()
 
@@ -29,6 +29,7 @@ export default function Login({ username, room, submitUsername, submitRoom, setM
   useEffect(() => {
     let params = queryString.parse(window.location.search)
     if (params["partneruid"] === undefined || params["partneruid"] === '') return
+    
     uuidRef.current.value = params["partneruid"]
     submitButton.current.click()
   }, []);
@@ -45,7 +46,7 @@ export default function Login({ username, room, submitUsername, submitRoom, setM
 
           <InputGroup className="mb-3">
             <FormControl ref={usernameRef} defaultValue={username} required placeholder="מה השם שלך?" aria-label="התחלת משחק חדש" aria-describedby="basic-addon1" />
-            <Button variant="primary" onClick={newGame}>להתחלת משחק חדש</Button>
+            <Button ref={newgameRef} variant="primary" onClick={newGame}>להתחלת משחק חדש</Button>
           </InputGroup>
 
 
@@ -54,8 +55,6 @@ export default function Login({ username, room, submitUsername, submitRoom, setM
             <Button type="submit" variant="warning" ref={submitButton}>להצטרף למשחק</Button>
           </InputGroup>
         </Form.Group>
-
-        <Instructions />
 
       </Form>
 

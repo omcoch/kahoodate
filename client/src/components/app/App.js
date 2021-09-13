@@ -6,6 +6,7 @@ import Dashboard from '../TheGame/Dashboard/Dashboard';
 import { SocketProvider } from '../../contexts/SocketProvider';
 import { AnswerProvider } from '../../contexts/AnswerProvider';
 import { QuestionProvider } from '../../contexts/QuestionProvider';
+import Instructions from '../Instructions/Instructions'
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         />
       }
 
+      <Instructions></Instructions>
     </div>
   );
 }

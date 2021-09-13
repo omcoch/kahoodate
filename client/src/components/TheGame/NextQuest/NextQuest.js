@@ -1,6 +1,6 @@
 import { useQuestion } from "../../../contexts/QuestionProvider";
 
-function NextQuest() {
+function NextQuest({disabled}) {
     const { requestQuestion } = useQuestion()
 
     function handleClick(e) {
@@ -18,6 +18,7 @@ function NextQuest() {
                     type="button" 
                     className="btn btn-outline-success mt-5 mb-5"
                     onClick={handleClick}
+                    disabled={disabled}
                 >                    
                 לשאלה הבאה &gt;&gt;
                 </button>

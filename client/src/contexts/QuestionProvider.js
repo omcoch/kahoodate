@@ -11,7 +11,7 @@ export function useQuestion() {
 
 export function QuestionProvider({ setMode, children }) {
     
-    const [question, setQuestion] = useState('להתחלה לחצו על "לשאלה הבאה"')
+    const [question, setQuestion] = useState('המתן לשותף')
     const [my_answer, setMyAnswer] = useState('')
     const [callbackFunc, setCallbackFunc] = useState()
 
@@ -24,7 +24,7 @@ export function QuestionProvider({ setMode, children }) {
 
     useEffect(() => {
         if (socket == null) return
-        
+              
         socket.on('receive-question', (word) => {
             setMode('inGame')
             setQuestion(word)            

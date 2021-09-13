@@ -17,6 +17,8 @@ export function SocketProvider({ room, username, Mode, setMode, children }) {
     const exitGame = (message) => {
         setMode(false)
         alert(message)
+        window.location.search = ''  // remove partneruid variable from url to avoid Balagan       
+        // rodo: firefox problem. reload in loops
     }
 
 
@@ -39,8 +41,7 @@ export function SocketProvider({ room, username, Mode, setMode, children }) {
     useEffect(() => {
         if (socket == null) return
         
-
-
+        
         socket.on('exit-game', (message) => {
             exitGame(message)
         })

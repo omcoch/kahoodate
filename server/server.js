@@ -49,16 +49,21 @@ function roomExists(room) {
     return playground[room] !== undefined
 }
 
+// delete room from DB, when one user disconnect
+function deleteRoom(room) {
+    playground.splice(room, 1)
+}
 
 io.on('connection', (socket) => {
     const room = socket.handshake.query.room // current socket room
     const username = socket.handshake.query.username // current socket username
     const Mode = socket.handshake.query.Mode // current game mode
 
+
     // start a new game
     if (Mode === 'newGame') {
         if (roomExists(room)) {
-            socket.emit('exit-game', "אירעה שגיאה נדירה. נסה לרענן ולהתחבר שוב למשחק.")
+            socket.emit('exit-game', "אירעה שגיאה נדירה. נסה לרענן ולהתחבר שוב למשחק.")    
             return
         }
 
@@ -93,6 +98,8 @@ io.on('connection', (socket) => {
         socket.join(room)
 
         // trigger reciving question
+        const rndWRd = getRandomWord(room)
+        io.to(room).emit('receive-question', rndWRd)
     }
 
 
@@ -115,7 +122,7 @@ io.on('connection', (socket) => {
 
     // answer from the client has been sent
     //---------------------------------------------------
-    socket.on('send-answer', async (emoji) => {
+    socket.on('send-answer', async (emoji) => {  
         const itsOk = await saveAnswer(socket.id, room, emoji)
         if (itsOk) {
             for (key in playground[room].participants) {
@@ -134,7 +141,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         io.to(room).emit('exit-game', "השותף שלך יצא מהמשחק, נסו להתחבר שוב.")
         // todo: deep remove of all the objects in this rooom elemnt
-        playground.splice(room, 1)
+        deleteRoom(room)
     })
 
 })
