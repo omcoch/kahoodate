@@ -1,4 +1,4 @@
 # kahoodate
 A fun game for (dating) couples, in the style of KAHOOT
 
-Try the first version in live: [kahoodate.herokuapp.com](https:\\kahoodate.herokuapp.com) 
+Try it today: [kahoodate.herokuapp.com](https://kahoodate.herokuapp.com) 
